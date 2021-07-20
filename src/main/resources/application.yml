@@ -2,7 +2,7 @@ server:
   port: 8080
 ---
 kafka:
-  bootstrapServers: localhost:9092
+  bootstrapServers: 3.37.99.14:9092
 
 ---
 spring:
@@ -26,7 +26,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: 3.37.99.14:9092
 #          brokers: 54.180.71.26:9092
         streams:
           binder:

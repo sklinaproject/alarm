@@ -28,8 +28,6 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: sklinaproject/alarm
-        tags: lastest
-        labels: sklinaproject
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     - name: Login to DockerHub

@@ -1,8 +1,7 @@
 1. Local 테스트 & 실행 확인
 2. Dockerfile 수정
- FROM openjdk:8u212-jdk-alpine   =>   FROM openjdk:11.0-slim
- 
- git commit & push
+ - FROM openjdk:8u212-jdk-alpine   =>   FROM openjdk:11.0-slim
+   git commit & push
 3. github 접속 sklinaproject/repositories
    - Setting 탭 클릭
      secrets 메뉴 선택 -> alarm 과 같이 두 개 secrets 값 생성 ,DOCKERHUB_USERNAME : sklinaproject , DOCKERHUB_TOKEN : 70267f1b-40a5-4597-a6d9-a5e140cc978a

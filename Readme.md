@@ -1,6 +1,6 @@
 1. Local 테스트 & 실행 확인
 2. Dockerfile 수정
- - FROM openjdk:8u212-jdk-alpine   =>   FROM openjdk:11.0-slim
+   - FROM openjdk:8u212-jdk-alpine   =>   FROM openjdk:11.0-slim
    git commit & push
 3. github 접속 sklinaproject/repositories
    - Setting 탭 클릭

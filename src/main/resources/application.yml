@@ -53,5 +53,46 @@ server:
   port: 8086
 ---
 
+spring:
+  profiles: dev
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 3.37.99.14:9092
+        streams:
+          binder:
+            configuration:
+              default:
+                key:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                value:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      bindings:
+        event-in:
+          group: customer
+          destination: ezinsurance
+          contentType: application/json
+        event-out:
+          destination: ezinsurance
+          contentType: application/json
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL57Dialect
+  datasource:
+    url: jdbc:mysql://database-1.csvj9ae9rzmk.ap-northeast-2.rds.amazonaws.com:3306/${DATASOURCE_SCHEMA}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driverClassName: org.mariadb.jdbc.Driver
+---
+
 mybatis:
   mapper-locations: /mapper/*.xml
+

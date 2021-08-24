@@ -18,7 +18,7 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL57Dialect
   datasource:
-    url: jdbc:mysql://database-1.csvj9ae9rzmk.ap-northeast-2.rds.amazonaws.com:3306/ezins
+    url: jdbc:mysql://localhost:3306/ezins
     username: sklina
     password: 123456
     driverClassName: org.mariadb.jdbc.Driver
@@ -26,8 +26,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 3.37.99.14:9092
-#          brokers: 54.180.71.26:9092
+          brokers: localhost:9092
         streams:
           binder:
             configuration:

@@ -3,6 +3,7 @@ package ezinsurance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,28 +24,28 @@ import java.util.Map;
     @Autowired
     MsgRepository msgRepository;
 
-    @RequestMapping(value = "/alarms.do", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> getMyalarms(@RequestBody HashMap<String, String> userMap) {
+    @RequestMapping(value = "/msgs/getMsgs", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getMyalarms(@RequestBody HashMap<String, Object> userMap) {
         
-		System.out.println("\n\n##### getMypages userMap : " + userMap + "\n\n");
-		
-		String  myName = userMap.get("myName");
+		System.out.println("\n\n##### getMsgs userMap : " + userMap + "\n\n");
+
+		String  custNm = (String)userMap.get("custNm"); //
 
 		Map<String, Object> result = new HashMap<>();
 
 		List<Msg> msgs = new ArrayList<>();
 
-		if(myName==null || "".equals(myName)) {
-			Iterable<Msg> msgIt = msgRepository.findAll();
+		if(StringUtils.isEmpty(custNm)) {
+			Iterable<Msg> mypageIt = msgRepository.findAll();
 
-			if( msgIt!= null)
+			if( mypageIt!= null)
 			{
-				msgIt.forEach(msgs::add);
+				mypageIt.forEach(msgs::add);
 			}
+
 		}
 		else {
-			msgs = msgRepository.findByCustNm(myName);
-			
+			msgs = msgRepository.findByCustNm(custNm);
 		}
 
 		result.put("data", msgs);
